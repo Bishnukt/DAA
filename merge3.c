@@ -27,15 +27,11 @@ void merge_sort(int *arr,int low,int up)
 	if(low>=up)
 		return ;
 	int x,y;
-	x=(low+up)/3;
-	printf("low=%d, up=%d\n",low,up);
+	x=low+((up-low)/3);
 	y=(x+up+1)/2;
-	printf("x=%d,y=%d\n",x,y);
 	merge_sort(arr,low,x);
 	merge_sort(arr,x+1,y);
 	merge_sort(arr,y+1,up);
-	printf("going to call merge : \n");
-	getchar();
 	merge(arr,low,x,y,up);
 }
 
@@ -115,7 +111,6 @@ void merge(int *arr,int low,int x,int y,int up)
 		j++;
 		c++;
 	}
-	printf("I am here ");
 	c=0;
 	for(i=low;i<=up;i++)
 	{
