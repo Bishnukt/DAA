@@ -1,6 +1,4 @@
 #include"helper.h"
-#include<stdio.h>
-#include<stdlib.h>
 
 int **mem_alloc(int r, int c)
 {
