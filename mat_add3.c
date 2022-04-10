@@ -1,5 +1,3 @@
-#include<stdio.h>
-//#include<stdlib.h>
 #include"helper.h"
 
 void mat_add(int **,int **,int **,int ,int ,int ,int);
@@ -16,7 +14,7 @@ int main()
 	
 	printf("Enter %d*%d elements in first matris: \n",n,n);
 	input(a,n,n);
-	printf("Enter %d*%d elements in second matrix: \b",n,n);
+	printf("Enter %d*%d elements in second matrix: \n",n,n);
 	input(b,n,n);
 	printf("\nMatrix A:\n");
 	display(a,n,n);

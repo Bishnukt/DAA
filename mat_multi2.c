@@ -1,5 +1,4 @@
 #include"helper.h"
-#include<stdio.h>
 
 void multi(int **,int **,int **,int,int,int,int,int,int,int,int);
 
