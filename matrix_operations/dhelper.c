@@ -20,7 +20,7 @@ void display(double **mat,int r,int c)
 	for(int i=0;i<r;i++)
 	{
 		for(int j=0;j<c;j++)
-			printf("%.2lf ",mat[i][j]);
+			printf("%g ",mat[i][j]);
 		printf("\n");
 	}
 }

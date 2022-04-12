@@ -11,8 +11,8 @@ void display(int *, int);
 void input(int *, int);
 int main()
 {
-    int n;
     int *arr;
+    int n;
     printf("Enter the number of elements to be sorted: ");
     scanf("%d", &n);
     arr = (int *)malloc(sizeof(int) * n);

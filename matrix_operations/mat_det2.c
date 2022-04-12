@@ -23,7 +23,7 @@ int main()
 	res=det(arr,n);
 	
 	freeall(arr,n);
-	printf("\nDeterminant of the given matrix is: %.2lf\n",res);
+	printf("\nDeterminant of the given matrix is: %g\n",res);
 	return 0;
 }
 
@@ -39,9 +39,9 @@ double det(double **arr,int n)
 		}
 		for(int j=i+1;j<n;j++)
 		{
-			double diff=arr[j][i]/arr[i][i];
 			if(arr[j][i]!=0)
 			{
+				double diff=arr[j][i]/arr[i][i];
 				for(int k=0;k<n;k++)
 					arr[j][k]=arr[j][k]-diff*arr[i][k];
 			}
@@ -71,9 +71,11 @@ void swap_row(double **arr,int n,int x)
 			double *temp=arr[i];
 			arr[i]=arr[x];
 			arr[x]=temp;
-			break;
+			return;
 		}
 	}
+	printf("Determinant of the given matrix is: 0\n");
+	exit(0);
 }
 
 
