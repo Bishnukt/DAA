@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+#include"helper.h"
 
 int det(int **, int);
 int **mem_alloc(int, int);
@@ -53,34 +54,3 @@ int det(int **mat, int n)
 
 }
 
-int **mem_alloc(int r, int c)
-{
-    int i;
-    int **temp = (int **)malloc(sizeof(int *) * r);
-    for (i = 0; i < r; i++)
-        temp[i] = (int *)malloc(sizeof(int) * c);
-    return temp;
-}
-
-void input(int **mat, int r, int c)
-{
-    int i, j;
-    for (i = 0; i < r; i++)
-        for (j = 0; j < c; j++)
-        {
-            scanf("%d", &mat[i][j]);
-        }
-}
-
-void display(int **mat, int r, int c)
-{
-    int i, j;
-    for (i = 0; i < r; i++)
-    {
-        for (j = 0; j < c; j++)
-        {
-            printf("%d ", mat[i][j]);
-        }
-        printf("\n");
-    }
-}
