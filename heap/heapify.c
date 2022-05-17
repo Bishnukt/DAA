@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+#define left (index*2+1)
+#define right (index*2+2)
 
 void heapify(int *,int ,int);
 void swap(int *,int *);
@@ -26,8 +28,8 @@ void heapify(int *arr,int index,int size)
 {
 	if(index>=0)
 	{
-		int left=index*2+1;
-		int right=index*2+2;
+//		int left=index*2+1;
+//		int right=index*2+2;
 		if(left<=size)
 		{
 			if(arr[left]>arr[index])
