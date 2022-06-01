@@ -15,7 +15,7 @@ int main()
 {
 	int n, key = 0, choice = 0;
 	printf("Enter the no. of vertices: ");
-	!scanf("%d", &n);
+	scanf("%d", &n);
 	arr=(int *)calloc(n,sizeof(int));
 
 	struct vertex *vertices = NULL,*start=NULL;
