@@ -1,28 +1,46 @@
+//Program to create max or min k-ary heap
+
 #include<stdio.h>
 #include<stdlib.h>
-//#include"heap_helper.h"
-//#define child(in,k,i) k*in+i
-#define child k*index+i
+#define child (k*index+i)
+
 void max_heap(int *,int,int);
+void min_heap(int *,int,int);
 void swap(int *,int *);
-int k,cnt=0;
-int main()
+void input(int *,int);
+int *mem_alloc(int );
+void display(int *,int);
+int k;
+
+int main(int argc,char *argv[])
 {
 	int n;
-	printf("Enter the value of k: ");
-	scanf("%d",&k);
+	if(argc>1)
+		k=atoi(argv[1]);
+	else
+	{
+		printf("Enter the value of k: ");
+		scanf("%d",&k);
+	}
 	printf("Enter the no. of elements: ");
 	scanf("%d",&n);
-	int *arr=(int *)calloc(n,sizeof(int));
+	int *arr=mem_alloc(n);
 	printf("Enter %d elements:\n",n);
-	for(int i=0;i<n;i++)
-		scanf("%d",&arr[i]);
-	max_heap(arr,(n-2)/k,n-1);
+	input(arr,n);
+	int choice;
+
+here:	printf("1.Create K-ary Max heap.\n2.Create K-ary Min heap.\nEnter choice: ");
+	scanf("%d",&choice);
+	switch(choice)
+	{
+		case 1: max_heap(arr,(n-2)/k,n-1);
+			break;
+		case 2: min_heap(arr,(n-2)/k,n-1);
+			break;
+		default: printf("Invalid choice, try again.\n");goto here;
+	}
 	printf("Elements in the %d-ary heap are: ",k);
-	for(int i=0;i<n;i++)
-		printf("%d ",arr[i]);
-	//printf("\n%d\n",cnt);
-	
+	display(arr,n);	
 	return 0;
 }
 
@@ -30,21 +48,43 @@ void max_heap(int *arr,int index,int size)
 {
 	if(index>=0)
 	{
-	//	cnt++;
-	int i=1;
-	//int child=k*index+i;
-	while(i<=k && child<=size)
-	{
-		if(arr[index]<arr[child])
+		int i=1;
+		int max=index;
+		while(i<=k && child<=size)
 		{
-			swap(&arr[index],&arr[child]);
-			max_heap(arr,child,size);
+			if(arr[max]<arr[child])
+			max=child;
+			i++;
 		}
-		i++;
-//		child=k*index+i;
-//		child++;
+		if(arr[index]<arr[max])
+		{
+			swap(&arr[index],&arr[max]);
+			max_heap(arr,max,size);
+		}
+		max_heap(arr,index-1,size);
 	}
-	max_heap(arr,index-1,size);
+}
+
+void min_heap(int *arr,int index,int size)
+{
+	if(index>=0)
+	{
+		int i=1;
+		int min=index;
+		while(i<=k && child<=size)
+		{
+			if(arr[min]>arr[child])
+				min=child;
+			i++;
+		}
+		
+		if(arr[index]>arr[min])
+		{
+			swap(&arr[index],&arr[min]);
+			min_heap(arr,min,size);
+		}
+
+		min_heap(arr,index-1,size);
 	}
 }
 
@@ -54,3 +94,45 @@ void swap(int *a,int *b)
 	*b^=*a;
 	*a^=*b;
 }
+
+void display(int *arr,int n)
+{
+	for(int i=0;i<n;i++)
+		printf("%d ",arr[i]);
+	printf("\n");
+}
+
+int *mem_alloc(int n)
+{
+	return (int *)calloc(n,sizeof(int));
+}
+
+void input(int *arr,int n)
+{
+	for(int i=0;i<n;i++)
+		scanf("%d",&arr[i]);
+}
+
+
+/*
+Output:
+
+Enter the value of k: 4
+Enter the no. of elements: 10
+Enter 10 elements:
+76 12 43 33 11 98 55 17 87 10
+1.Create K-ary Max heap.
+2.Create K-ary Min heap.
+Enter choice: 1
+Elements in the 4-ary heap are: 98 87 43 33 11 12 55 17 76 10 
+
+Enter the value of k: 4 
+Enter the no. of elements: 10
+Enter 10 elements:
+76 12 43 33 11 98 55 17 87 10
+1.Create K-ary Max heap.
+2.Create K-ary Min heap.
+Enter choice: 2
+Elements in the 4-ary heap are: 10 12 43 33 11 98 55 17 87 76 
+
+*/
