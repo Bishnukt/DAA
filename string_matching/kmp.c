@@ -74,3 +74,5 @@ char *mem_alloc()
 	tmp=realloc(tmp,s);
 	return tmp;
 }
+
+
